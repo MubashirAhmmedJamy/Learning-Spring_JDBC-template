@@ -1,0 +1,1 @@
+dao.EmployeeDAO=org.springframework.stereotype.Component

@@ -1,0 +1,41 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<beans xmlns="http://www.springframework.org/schema/beans"
+  xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+  xmlns:context="http://www.springframework.org/schema/context"
+  xmlns:aop="http://www.springframework.org/schema/aop"
+  xsi:schemaLocation="http://www.springframework.org/schema/beans 
+  http://www.springframework.org/schema/beans/spring-beans.xsd
+  http://www.springframework.org/schema/context 
+  http://www.springframework.org/schema/context/spring-context.xsd 
+  http://www.springframework.org/schema/aop 
+  http://www.springframework.org/schema/aop/spring-aop.xsd">
+
+    <aop:aspectj-autoproxy/>
+    <context:annotation-config/>
+    <context:component-scan base-package="dao"/>
+       
+    <bean id="dataSource" class="org.springframework.jdbc.datasource.DriverManagerDataSource">
+        <qualifier value="Q"/>
+        <property name="driverClassName" value="com.mysql.jdbc.Driver"/>
+        <property name="url" value="jdbc:mysql://localhost:3306/spring_jdbc"/>
+        <property name="username" value="root"/>
+        <property name="password" value="paradise46"/>
+    </bean>
+    
+    
+    <bean id="emp" class="model.Employee">
+<!--        <property name="id">
+            <value>10</value>
+        </property>
+        <constructor-arg value="Sodoruddin Ahmed"/>
+        <constructor-arg value="30000.00" type="double"/>-->
+    </bean>
+    
+    <bean id="empdaosup" class="dao.EmployeeDAOsupport">
+<!--        <property name="namedParameterJdbcTemplate" ref="dataSource"/>
+        <property name="jdbcTemplate" ref="dataSource"/>-->
+        
+        <property name="dataSource" ref="dataSource"/>
+    </bean>
+
+</beans>
