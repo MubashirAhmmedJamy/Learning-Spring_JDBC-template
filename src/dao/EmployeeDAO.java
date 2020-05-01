@@ -23,7 +23,7 @@ public class EmployeeDAO {
     
     @Autowired
     @Qualifier("Q")
-    public void setDataSource(DataSource data) {
+    public void setData(DataSource data) {
         this.data = data;
         templete = new JdbcTemplate(data);
         namedTemplate = new NamedParameterJdbcTemplate(data);
@@ -72,6 +72,8 @@ public class EmployeeDAO {
         }
         return x;
     }
+    
+    
     public String retrieveEmpByID(int id){
         String sql = "select Name from employee where id = ?";
 //        System.out.println("SQL: "+sql);
